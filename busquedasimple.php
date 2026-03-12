@@ -1,29 +1,40 @@
 <?php
+// Obtiene el parámetro 'expr' de la URL (buscar)
+$busqueda = $_GET["src"];
 
-$expressio = $_GET["expr"];
-
+// Conexión con la BBDD
 require_once("Conexion_MySQL.php");
-$dbClass = new Database();
-$db = $dbClass->getConnection();
+$gestorBD  = new BaseDatos();
+$baseDatos = $gestorBD ->Conexion();
 
-$dbTabla='noticiasFTInnodb';
+// Tabla de la BBDD
+$tablaBD='noticiasFTInnodb';
 
-$consulta = "SELECT * FROM $dbTabla WHERE MATCH(titulo, cuerpo) AGAINST (:e)"; 
-$result = $db->prepare($consulta); 
-$result->execute(array(":e" => $expressio));
+// Se realiza la consulta a la BBDD
+$consulta = "SELECT * FROM $tablaBD WHERE MATCH(titulo, cuerpo) AGAINST (:e)";
+$resultado = $baseDatos->prepare($consulta);
+$resultado->execute(array(":e" => $busqueda));
 
-//Processament + output
-$total = $result->rowCount();
-if ($total>0){ //Tenim resultats per la cerca
-	print "<h2>Tenemos $total de resultados para <b>$expressio</b> en la bbdd </h2>\n";
-	print "<ol>";
-	foreach( $result as $valor){
-		print "<li>".$valor["titulo"]."</li>";
-	} 
-	print "</ol>";
-}else{ // No hi ha resultats per la cerca
-	print "<h2>No hay resultados para <b>$expressio</b> en la bbdd </h2>\n";
+// Procesamiento de los datos y generación del contenido de salida
+$total = $resultado->rowCount();
+
+if ($total>0){ // Caso 1: Se han encontrado coincidencias en la base de datos
+
+    print "<h2>Tenemos $total de resultados para <b>$busqueda</b> en la bbdd </h2>\n";
+
+    print "<ol>";
+// Recorremos el conjunto de resultados para listar los títulos encontrados
+    foreach( $resultado as $valor){
+        print "<li>".$valor["titulo"]."</li>";
+    }
+    print "</ol>";
+
 }
-//Cerramos conexión
-$db=NULL;
+else// Caso 2: la busqueda no ha encontrado resultados:
+{ 
+	print "<h2>No hay resultados para <b>$busqueda</b> en la bbdd </h2>\n";
+}
+
+//Cerramos conexión para liberar recursos
+$baseDatos=NULL;
 ?>

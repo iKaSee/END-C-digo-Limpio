@@ -1,5 +1,5 @@
 <?php
-class Database {
+class BaseDatos {
     private $host = 'localhost';
     private $dbName = 'noticias';
     private $user = 'buscador'; 
@@ -22,7 +22,7 @@ class Database {
         }
     }
 
-    public function getConnection(): PDO {
+    public function Conexion(): PDO {
         return $this->connection;
     }
 }
