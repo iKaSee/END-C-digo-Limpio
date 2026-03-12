@@ -1,18 +1,29 @@
-<?php 
- class Conexion extends PDO { 
-   private $tipo_de_base = 'mysql';
-   private $host = 'localhost';
-   private $nombre_de_base = '';
-   private $usuario = '';
-   private $contrasena = ''; 
-   public function __construct() {
-      //Sobreescribo el método constructor de la clase PDO.
-      try{
-         parent::__construct($this->tipo_de_base.':host='.$this->host.';dbname='.$this->nombre_de_base, $this->usuario, $this->contrasena, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-      }catch(PDOException $e){
-         echo 'Ha surgido un error y no se puede conectar a la base de datos. Detalle: ' . $e->getMessage();
-         exit;
-      }
-   } 
- } 
-?>
+<?php
+// Archivo: Database.php
+
+class Database {
+    private $host = 'localhost';
+    private $dbName = 'davids';
+    private $user = 'root'; 
+    private $password = '12345'; 
+    private $charset = 'utf8mb4';
+    private $connection;
+
+    public function __construct() {
+        $dsn = "mysql:host={$this->host};dbname={$this->dbName};charset={$this->charset}";
+        
+        try {
+            $this->connection = new PDO($dsn, $this->user, $this->password);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            
+            error_log("Connection Error: " . $e->getMessage());
+            die("Error interno en el servidor de datos.");
+        }
+    }
+
+    public function getConnection(): PDO {
+        return $this->connection;
+    }
+}
