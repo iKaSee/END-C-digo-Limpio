@@ -1,21 +1,8 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Resultats de cerca</title>
-</head>
-<?
-require_once("conexion_pdo.php");
+<?php
 $expressio = $_GET["expr"];
-?>
-<body>
-<form method="get" action="busquedasimple.php">
-<label>Cerca<input type="text" name="expr" value="<?PHP echo $expressio; ?>"></label>
-<input type="submit" value="cerca!">
-</form>
-
-<?PHP
-$db = new Conexion();
+require_once("conexion_pdo.php");
+$dbClass = new Database();
+$db = $dbClass->getConnection();
 $dbTabla='noticiasFTInnodb';
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla WHERE MATCH(titulo, cuerpo) AGAINST (:e)";
@@ -50,5 +37,3 @@ if ($total>0){ //Tenim resultats per la cerca
 //Cerramos conexión
 $db=NULL;
 ?>
-</body>
-</html>

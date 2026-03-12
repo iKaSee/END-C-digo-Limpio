@@ -1,16 +1,15 @@
 <?php
-// Archivo: Database.php
-
 class Database {
     private $host = 'localhost';
-    private $dbName = 'davids';
-    private $user = 'root'; 
+    private $dbName = 'noticias';
+    private $user = 'buscador'; 
+    private $puerto = '3306';
     private $password = '12345'; 
     private $charset = 'utf8mb4';
     private $connection;
 
     public function __construct() {
-        $dsn = "mysql:host={$this->host};dbname={$this->dbName};charset={$this->charset}";
+        $dsn = "mysql:host={$this->host};port={$this->puerto};dbname={$this->dbName};charset={$this->charset}";
         
         try {
             $this->connection = new PDO($dsn, $this->user, $this->password);
