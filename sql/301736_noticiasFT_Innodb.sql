@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS davids;
+USE davids;
 -- phpMyAdmin SQL Dump
 -- version 3.3.7deb7
 -- http://www.phpmyadmin.net

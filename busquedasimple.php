@@ -1,9 +1,9 @@
 <?php
 // Obtiene el parámetro 'expr' de la URL (buscar)
-$busqueda = $_GET["src"];
+$busqueda = $_GET["expr"];
 
 // Conexión con la BBDD
-require_once("Conexion_MySQL.php");
+require_once("db/Conexion_MySQL.php");
 $gestorBD  = new BaseDatos();
 $baseDatos = $gestorBD ->Conexion();
 
@@ -20,7 +20,7 @@ $total = $resultado->rowCount();
 
 if ($total>0){ // Caso 1: Se han encontrado coincidencias en la base de datos
 
-    print "<h2>Tenemos $total de resultados para <b>$busqueda</b> en la bbdd </h2>\n";
+    print "<h2>Tenemos $total resultados para <b>$busqueda</b></h2>\n";
 
     print "<ol>";
 // Recorremos el conjunto de resultados para listar los títulos encontrados
@@ -32,7 +32,7 @@ if ($total>0){ // Caso 1: Se han encontrado coincidencias en la base de datos
 }
 else// Caso 2: la busqueda no ha encontrado resultados:
 { 
-	print "<h2>No hay resultados para <b>$busqueda</b> en la bbdd </h2>\n";
+	print "<h2>No hay resultados para <b>$busqueda</b></h2>\n";
 }
 
 //Cerramos conexión para liberar recursos

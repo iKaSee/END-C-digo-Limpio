@@ -1,0 +1,33 @@
+/*Archivo con estilos para los resultados (dentro del iframe)*/
+/* Importamos los estilos para el contenido interno del iframe */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    color: #1a1a1a; 
+    line-height: 1.8; 
+    padding: 20px;
+    background-color: transparent; /* Fondo transparente para que se vea el fondo principal */
+}
+
+/*Estilo del titulo secundario que indica el numero de resultados*/
+h2 { 
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: #5f5a4e;
+    font-size: 0.9rem; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 15px;
+}
+
+/*reseteamos la lista para crear la nuestra propia*/
+ol { 
+    padding: 0; 
+    margin: 0; 
+    list-style: none; 
+    counter-reset: noticia-counter; 
+}
