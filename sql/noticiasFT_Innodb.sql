@@ -1,31 +1,10 @@
-CREATE DATABASE IF NOT EXISTS davids;
-USE davids;
--- phpMyAdmin SQL Dump
--- version 3.3.7deb7
--- http://www.phpmyadmin.net
---
--- Servidor: localhost
--- Temps de generació: 24-11-2013 a les 11:08:54
--- Versió del servidor: 5.1.66
--- Versió de PHP : 5.3.3-7+squeeze17
+CREATE DATABASE IF NOT EXISTS noticias;
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+USE noticias;
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de dades: `davids`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `noticiasFTInnodb`
---
+CREATE USER 'buscador'@'localhost' IDENTIFIED BY '12345';
+GRANT SELECT ON noticias.* TO 'buscador'@'localhost';
+FLUSH PRIVILEGES;
 
 CREATE TABLE IF NOT EXISTS `noticiasFTInnodb` (
   `id_noticia` int(11) NOT NULL AUTO_INCREMENT,
@@ -35,10 +14,6 @@ CREATE TABLE IF NOT EXISTS `noticiasFTInnodb` (
   PRIMARY KEY (`id_noticia`),
   FULLTEXT KEY `titulo` (`titulo`,`cuerpo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
-
---
--- Bolcant dades de la taula `noticiasFTInnodb`
---
 
 INSERT INTO `noticiasFTInnodb` (`id_noticia`, `titulo`, `cuerpo`, `data`) VALUES
 (1, 'Casa Tecnología sí; uso no tanto', 'El País Vasco invierte en investigación y en el desarrollo de tecnologías que hagan viables las energías renovables, apuesta por proyectos de gran visibilidad mediática como el que extrae la energía de las olas en Mutriku, pero en su día a día, en su industria y en sus hogares, consume poca energía limpia. El del uso de energías renovables es uno de los datos que recoge la primera evaluación de la estrategia EcoEuskadi 2020, un documento creado por el Ejecutivo vasco y que busca lograr una Euskadi sostenible en su definición más amplia —desde las políticas medioambientales hasta las políticas sociales—.\r\n\r\nSi bien el informe considera que en los aspectos en los que mejor situada está Euskadi es en cuestiones energéticas como las emisiones de CO2 (la comunidad autónoma se encuentra al -15%, cuando el reto es estar en el -20%), el ahorro energético y el peso de las energías renovables, lo cierto es que la implantación de estas últimas, a nivel de consumo, está muy lejos de alcanzar el objetivo establecido para dentro de ocho años.\r\n\r\nY es que solo un 8,2% de las energías que emplea Euskadi son renovables, cuando España ya las utiliza en un 13,8% y Europa en un 12,5%. El objetivo establecido en EcoEuskadi 2020 es que, en el consumo final, este tipo de energía tenga un peso del 17%, pero otro documento, la estrategia energética elaborada por el Departamento de Industria, reduce el reto al 14%.\r\n\r\nEl Ente Vasco de la Energía aspira a “convertir a Euskadi en un polo tecnológico de energías renovables”, un objetivo que, según el economista y consultor ambiental Antxon Olabe, “es correcto, porque esta región puede ser un elemento tractor de la transformación en materia energética a nivel europeo”. Sin embargo, añade, “hay una tensión, una falta de coherencia, entre la voluntad de ser una región tractora a nivel tecnológico y la propia utilización de renovables”.\r\n\r\nEsa contradicción surge de “una década bastante fallida en términos de implantación efectiva de las renovables en Euskadi”, subraya Olabe. Los culpables son factores que van desde una climatología no lo suficientemente adecuada para que la comunidad autónoma sea una potencia en esta materia, hasta una falta de acuerdo institucional y una contestación social que han hecho que parte del despliegue, sobre todo de parques eólicos, falle.', '2012-11-05'),
