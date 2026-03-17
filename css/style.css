@@ -31,6 +31,7 @@ body {
     background-image: radial-gradient(#e0ddd5 1px, transparent 1px);
     background-size: 20px 20px;
     padding-top: 10vh;
+    height: 100vh;
 }
 
 /* titulo principal */
@@ -38,8 +39,7 @@ h1 {
     font-family: var(--font-title);
     font-size: 4.5rem;
     font-weight: 700;
-    color: var(--text-main);
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     letter-spacing: -2px;
 }
 
@@ -51,7 +51,6 @@ h1::after {
 
 /* estilo del subtitulo */
 .subtitle {
-    font-family: var(--font-body);
     color: var(--text-menu);
     font-size: 1rem;
     text-transform: uppercase;
@@ -62,7 +61,7 @@ h1::after {
 /* contenedor de barra de busqueda */
 .search-container {
     width: 90%;
-    max-width: 650px;
+    max-width: 700px;
     background-color: var(--search-bg);
     padding: 8px;
     border-radius: 50px;
@@ -93,6 +92,10 @@ h1::after {
 .search-input::placeholder {
     color: #a09c91;
     font-weight: 300;
+}
+
+.search-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 /* el boton de la lupita */
@@ -126,14 +129,13 @@ h1::after {
 .results-wrapper {
     width: 100%;
     max-width: 900px;
-    margin-top: 60px;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    padding-top: 40px;
+    margin: 40px 0;
+    height: 100%;
 }
 
 iframe[name="resultados"] {
     width: 100%;
-    height: 600px;
+    height: 100%;
     border: none;
     background: transparent;
 }

@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The News Archive | Buscador</title>
+    <title>The Games Archive | Buscador</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <h1>Buscador</h1>
-    <p class="subtitle">Archivo Digital de Noticias</p>
+    <p class="subtitle">Archivo Digital de Juegos</p>
 
     <form class="search-container" method="get" action="busquedasimple.php" target="resultados">
-        <input type="text" name="expr" class="search-input" placeholder="Buscar titulares, temas..." required>
+        <input type="text" name="expr" class="search-input" placeholder="Buscar juegos, compañias..." required>
         
         <button type="submit" class="search-button" aria-label="Buscar">
             <svg viewBox="0 0 24 24">

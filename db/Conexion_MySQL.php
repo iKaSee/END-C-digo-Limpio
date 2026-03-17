@@ -1,7 +1,7 @@
 <?php
 class BaseDatos {
     private $host = 'localhost';
-    private $dbName = 'noticias';
+    private $dbName = 'games';
     private $user = 'buscador'; 
     private $puerto = '3306';
     private $password = '12345'; 
